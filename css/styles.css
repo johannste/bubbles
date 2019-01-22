@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#drawCanvas {
+    display: block;
+    background-color: #333333;
+    position: relative;
+}
+
+.btnFunction {
+    position: absolute;
+    bottom: 0
+}
