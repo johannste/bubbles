@@ -6,14 +6,17 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 <body>
+<div id="guide"></div>
+<div class="counter" hidden>
+    <img src="img/10s.png">
+</div>
 <div class="egg" hidden>
     <img src="img/46381bd484f94a5813f7f5cfdd1c0a7b.gif">
 </div>
-<canvas id='drawCanvas'></canvas>
-<div class="btnFunction">
-    <input type="button" value="add" onClick="addRandomCircle()">
-    <input type="button" value="clear" onClick="clearCanvas()">
+<div class="btnFunction" hidden>
+    <button class="refresh"></button>
 </div>
+<canvas id='drawCanvas'></canvas>
 <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

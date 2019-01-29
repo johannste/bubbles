@@ -35,6 +35,7 @@ let canvasClick = e => {
         let distanceFromCenter = Math.sqrt(Math.pow(circle.x - clickX, 2) + Math.pow(circle.y - clickY, 2));
         if (distanceFromCenter <= circle.radius) {
             circle.radius = 0;
+            draw(3);
             switch (circle.color) {
                 case colors[0]:
                     color0 += 1;
@@ -93,10 +94,6 @@ $(document).ready(() => {
 
     $(window).resize(resizeCanvas);
     resizeCanvas();
-
-    for (let i = 0; i < 10; i++) {
-        addRandomCircle();
-    }
 });
 
 let clearCanvas = () => {
@@ -104,9 +101,27 @@ let clearCanvas = () => {
     drawCircles();
 };
 
-setTimeout(() => {
-    clearCanvas();
-    $('input').hide();
-    console.log('You did it!');
-    $('.egg').show();
-}, 10000);
+$('button').click(() => location.reload()
+);
+
+let draw = (x) => {
+    for (let i = 0; i < x; i++) {
+        addRandomCircle();
+    }
+};
+
+$('#guide').click(() => {
+    $('#guide').hide();
+    $('.counter').show();
+    setTimeout(() => {
+        $('.counter').hide();
+        draw(10);
+    }, 2000);
+    setTimeout(() => {
+        clearCanvas();
+        $('input').hide();
+        console.log('You did it!');
+        $('.egg').show();
+        $('.btnFunction').show();
+    }, 12000);
+});
