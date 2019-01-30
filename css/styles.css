@@ -1,3 +1,15 @@
+.result {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 500px;
+    height: 812px;
+    z-index: 300;
+}
+
 .counter {
     position: fixed;
     margin: auto;
@@ -12,11 +24,13 @@
 }
 
 .refresh {
-    margin-left: 7px;
+    margin: auto;
     background: url('../img/3_cards_cards_loading.gif') center no-repeat;
     width: 32px;
     height: 32px;
-    border: 0
+    border: 0;
+    position: fixed;
+    bottom: 50px;
 }
 
 #guide {
@@ -42,7 +56,7 @@
     bottom: 0;
     width: 46px;
     height: 19px;
-    z-index: 200;
+    z-index: 400;
     padding-top: 350px;
 }
 

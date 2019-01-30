@@ -6,12 +6,15 @@ function Circle(x, y, radius, color) {
 }
 
 let circles = [];
-let colors = ['#F73859', '#ff4c00', '#77baff', '#ffffff', '#000000'];
-let color0 = 0;
-let color1 = 0;
-let color2 = 0;
-let color3 = 0;
-let color4 = 0;
+let colors = ['#F73859', '#ff4c00', '#77baff', '#ffffff'];
+
+let data = [];
+let colour = [4];
+data.push(colour);
+colour[0] = 0;
+colour[1] = 0;
+colour[2] = 0;
+colour[3] = 0;
 
 let drawCircles = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,27 +38,23 @@ let canvasClick = e => {
         let distanceFromCenter = Math.sqrt(Math.pow(circle.x - clickX, 2) + Math.pow(circle.y - clickY, 2));
         if (distanceFromCenter <= circle.radius) {
             circle.radius = 0;
-            draw(3);
+            draw(2);
             switch (circle.color) {
                 case colors[0]:
-                    color0 += 1;
-                    console.log('colors[0] ============= ' + color0);
+                    colour[0] += 1;
+                    console.log('colors[0] ============= ' + colour[0]);
                     break;
                 case colors[1]:
-                    color1 += 1;
-                    console.log('colors[1] ============= ' + color1);
+                    colour[1] += 1;
+                    console.log('colors[1] ============= ' + colour[1]);
                     break;
                 case colors[2]:
-                    color2 += 1;
-                    console.log('colors[2] ============= ' + color2);
+                    colour[2] += 1;
+                    console.log('colors[2] ============= ' + colour[2]);
                     break;
                 case colors[3]:
-                    color3 += 1;
-                    console.log('colors[3] ============= ' + color3);
-                    break;
-                case colors[4]:
-                    color4 += 1;
-                    console.log('colors[4] ============= ' + color4);
+                    colour[3] += 1;
+                    console.log('colors[3] ============= ' + colour[3]);
                     break;
                 default:
                     console.log(circle.color);
@@ -81,7 +80,7 @@ let addRandomCircle = () => {
     let radius = randomFromTo(49, 81);
     let x = randomFromTo(0, canvas.width);
     let y = randomFromTo(0, canvas.height);
-    let color = colors[randomFromTo(0, 4)];
+    let color = colors[randomFromTo(0, 3)];
     let circle = new Circle(x, y, radius, color);
     circles.push(circle);
     drawCircles();
@@ -118,10 +117,38 @@ $('#guide').click(() => {
         draw(10);
     }, 2000);
     setTimeout(() => {
+        // TODO ajax
+        console.log(data);
         clearCanvas();
         $('input').hide();
         console.log('You did it!');
         $('.egg').show();
-        $('.btnFunction').show();
     }, 12000);
+});
+
+$('.egg').click(() => {
+    let resultNumber = Math.floor(Math.random() * 5);
+    switch (resultNumber) {
+        case 0:
+            $('#r1').show();
+            break;
+        case 1:
+            $('#r2').show();
+            break;
+        case 2:
+            $('#r3').show();
+            break;
+        case 3:
+            $('#r4').show();
+            break;
+        case 4:
+            $('#r5').show();
+            break;
+        case 5:
+            $('#r6').show();
+            break;
+        default:
+            console.error('You are awesome!');
+    }
+    $('.btnFunction').show();
 });
