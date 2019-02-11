@@ -1,12 +1,39 @@
-function Circle(x, y, radius, color) {
+function Circle(x, y, radius, color, text, style) {
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.color = color;
+    this.text = text;
+    this.style = style;
 }
 
 let circles = [];
+
+let signs = [];
+signs[0] = '开心~';
+signs[1] = '讲的真好';
+signs[2] = '很happy';
+signs[3] = '棒棒的';
+signs[4] = '美滋滋';
+signs[5] = '蓝瘦香菇';
+signs[6] = '太差了吧';
+signs[7] = '神奇了';
+signs[8] = '唉~~~';
+signs[9] = '土包子';
+signs[10] = '淡淡的风';
+signs[11] = '凉快~';
+signs[12] = '淡定~';
+signs[13] = 'nice';
+signs[14] = '不错哦';
+signs[15] = '随便点';
+signs[16] = '飘过~~';
+signs[17] = '略懂~~';
+signs[18] = '~~~~';
+signs[19] = '嘿嘿嘿';
+let text = [];
+
 let colors = ['#F73859', '#ff4c00', '#77baff', '#ffffff'];
+let style = '';
 
 let data = [];
 let colour = [4];
@@ -16,16 +43,23 @@ colour[1] = 0;
 colour[2] = 0;
 colour[3] = 0;
 
-let drawCircles = () => {
+let clearCanvas = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
+
+};
+let drawCircles = () => {
+    clearCanvas();
     for (let i in circles) {
-        context.globalAlpha = (Math.random() * 10 + 1) / 10;
+        context.globalAlpha = (Math.random() * 10 + 1) / 5;
         context.beginPath();
         context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, Math.PI * 2);
         context.fillStyle = circles[i].color;
         context.strokeStyle = circles[i].color;
         context.fill();
         context.stroke();
+        context.fillStyle = circles[i].style;
+        context.font = '25px 微软雅黑';
+        context.fillText(circles[i].text, circles[i].x - 40, circles[i].y + 10);
     }
 };
 
@@ -36,7 +70,9 @@ let canvasClick = e => {
         let distanceFromCenter = Math.sqrt(Math.pow(circles[i].x - clickX, 2) + Math.pow(circles[i].y - clickY, 2));
         if (distanceFromCenter <= circles[i].radius) {
             circles[i].radius = 0;
+            circles[i].text = '';
             draw(2);
+
             switch (circles[i].color) {
                 case colors[0]:
                     colour[0] += 1;
@@ -53,7 +89,6 @@ let canvasClick = e => {
                 default:
                     console.log(circles[i].color);
             }
-            drawCircles();
         }
     }
 };
@@ -71,13 +106,30 @@ let randomFromTo = (from, to) => {
 };
 
 let addRandomCircle = () => {
-    let radius = randomFromTo(49, 81);
+    let radius = randomFromTo(56, 81);
     let x = randomFromTo(0, canvas.width);
     let y = randomFromTo(0, canvas.height);
     let color = colors[randomFromTo(0, 3)];
-    let circle = new Circle(x, y, radius, color);
+    switch (color) {
+        case colors[0]:
+            text = signs[randomFromTo(0, 4)];
+            style = '#ffffff';
+            break;
+        case colors[1]:
+            text = signs[randomFromTo(5, 9)];
+            style = '#ffffff';
+            break;
+        case colors[2]:
+            text = signs[randomFromTo(10, 14)];
+            style = '#ffffff';
+            break;
+        case colors[3]:
+            text = signs[randomFromTo(15, 19)];
+            style = '#333333';
+            break;
+    }
+    let circle = new Circle(x, y, radius, color, text, style);
     circles.push(circle);
-    drawCircles();
 };
 
 $(document).ready(() => {
@@ -89,9 +141,8 @@ $(document).ready(() => {
     resizeCanvas();
 });
 
-let clearCanvas = () => {
+let clearCircles = () => {
     circles = [];
-    drawCircles();
 };
 
 $('button').click(() => location.reload());
@@ -100,6 +151,7 @@ let draw = (x) => {
     for (let i = 0; i < x; i++) {
         addRandomCircle();
     }
+    drawCircles();
 };
 
 $('#guide').click(() => {
@@ -111,6 +163,7 @@ $('#guide').click(() => {
         setTimeout(() => {
             // TODO ajax
             console.log(data);
+            clearCircles();
             clearCanvas();
             $('input').hide();
             console.log('You did it!');
