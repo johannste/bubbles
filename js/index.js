@@ -1,10 +1,12 @@
-function Circle(x, y, radius, color, text, style) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.color = color;
-    this.text = text;
-    this.style = style;
+class Circle{
+    constructor(x, y, radius, color, text, style) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.text = text;
+        this.style = style;
+    }
 }
 
 let circles = [];
