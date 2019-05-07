@@ -180,22 +180,22 @@ $('.egg').click(() => {
     let result = Math.floor(Math.random() * 6);
     switch (result) {
         case 0:
-            resultNode.append('<img src="../img/result/2018111371e71438f378978af185363df0c81249.png" alt="">');
+            resultNode.append('<img src="img/result/2018111371e71438f378978af185363df0c81249.png" alt="">');
             break;
         case 1:
-            resultNode.append('<img src="../img/result/2018111303161044b0fc6cd95134fdfbab45e513.png" alt="">');
+            resultNode.append('<img src="img/result/2018111303161044b0fc6cd95134fdfbab45e513.png" alt="">');
             break;
         case 2:
-            resultNode.append('<img src="../img/result/20181113e06a425140769f6bdd45c4d527adcf6e.png" alt="">');
+            resultNode.append('<img src="img/result/20181113e06a425140769f6bdd45c4d527adcf6e.png" alt="">');
             break;
         case 3:
-            resultNode.append('<img src="../img/result/2018112104ca7dfcec12b74c686c17665b01d384.png" alt="">');
+            resultNode.append('<img src="img/result/2018112104ca7dfcec12b74c686c17665b01d384.png" alt="">');
             break;
         case 4:
-            resultNode.append('<img src="../img/result/20181121510af8a3c2769b88dfc50aec8e6a9c3f.png" alt="">');
+            resultNode.append('<img src="img/result/20181121510af8a3c2769b88dfc50aec8e6a9c3f.png" alt="">');
             break;
         case 5:
-            resultNode.append('<img src="../img/result/2018112112962fe004f7db1766f16ee8459e3255.png" alt="">');
+            resultNode.append('<img src="img/result/2018112112962fe004f7db1766f16ee8459e3255.png" alt="">');
             break;
     }
     $('.btnFunction').show();
